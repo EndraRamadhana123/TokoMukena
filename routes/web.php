@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MitraKegiatanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\CoaController;
@@ -109,4 +110,7 @@ Route::get('jurnal/viewdatajurnalumum/{periode}', [App\Http\Controllers\JurnalCo
 Route::get('jurnal/bukubesar', [App\Http\Controllers\JurnalController::class,'bukubesar'])->middleware(['auth']);
 Route::get('jurnal/viewdatabukubesar/{periode}/{akun}', [App\Http\Controllers\JurnalController::class,'viewdatabukubesar'])->middleware(['auth']);
 
+//route mitra kegiatan
+Route::get('mitra_kegiatan/fetchAll', [App\Http\Controllers\MitraKegiatanController::class,'fetchAll'])->middleware(['auth']);
+Route::resource('mitra_kegiatan', MitraKegiatanController::class)->middleware(['auth']);
 require __DIR__.'/auth.php';
